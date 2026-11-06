@@ -57,7 +57,11 @@ The store wants to keep customer addresses. Propose two architectures for the CU
 **HINT:** search type 1 vs type 2 slowly changing dimensions. 
 
 ```
-Your answer...
+
+Type 1 SCD is the architecture that will overwrite. For this architecture, I propose creating a CUSTOMER_ADDRESS table with a customer_id column (as the PK and also the FK that links to the customer table) and all the address info columns of street, city, province, postal_code, country. When a customer's address changes, the information will be overwritten.
+
+Type 2 SCD is the architecture that will retain changes. For this architecture, I propose creating a CUSTOMER_ADDRESS table with columns customer_address_id as the PK, customer_id as a FK, and all the address info columns of street, city, province, postal_code, country. Additionally, I will include these columns: is_current (1 or 0 based on if the address is current), and also address_start_date to show when the customer added the current address, and address_end_date (this would be NULL for the current address, and filled in for past addresses).
+
 ```
 
 ***
@@ -193,4 +197,12 @@ Consider, for example, concepts of labour, bias, LLM proliferation, moderating c
 
 ```
 Your thoughts...
+
+This was a very interesting read!
+
+I think an ethical issue important to this story concerns labour, what we count as labour, and what kinds of labour get compensated. When Li and her team were developing ImageNet, they hired people on MTurk to outsource labour in a massively cheap way, literally for pennies. Based on the contribution of this crowd of workers, ImageNet was developed, which then was used to develop Hinton's breakthrough model. Now, this model has been used to develop LLMs and other AI tools and will continue to be the inspiration and backbone of many new technologies. This chain of development has led to its own market and economy, AI is an incredible generator of revenue. However, those MTurk workers who likely did not get compensated more than a few cents for their labour have never and will never see any of that revenue. Is this ethical? No matter the credit for intellectual contributions, ImageNet could not have been developed without the MTurk workers' labour. They are then a part of its success. Should this success be rewarded with money?
+
+These questions pertain to a larger ethical issue than the singular case of ImageNet. When the people who conducted the labour behind a service or product are invisible either through outsourcing or doing work assumed to be done by machines (as is the case for sewing), their labour is devalued. This is a problem that is growing larger with the rapid improvements in technology and AI. While the nitty gritty work remains human, we have started to assume that almost everything can be automated. This results in human labour being seen as replaceable and less valuable, creating implications for what counts as, and gets paid as labour.
+
+
 ```
